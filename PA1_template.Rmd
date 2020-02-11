@@ -8,18 +8,28 @@ output:
 
 ## Loading and preprocessing the data
 
+library(knitr)
+library(ggplot2)
 
+data <- read.csv('activity.csv')
+data <- read.csv('activity.csv')
 
 ## What is mean total number of steps taken per day?
-
+10766.19
 
 
 ## What is the average daily activity pattern?
-
+See Time_Series_Plot.PNG
 
 
 ## Imputing missing values
-
+imputed_data <- data
+for (i in 1:length(imputed_data$steps)) {
+  if (is.na(imputed_data$steps[i])) {
+    imputed_data$steps[i] <- mean_steps_interval$steps[mean_steps_interval$interval == imputed_data$interval[i]]
+  }
+}
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
+Yes, see Panel_Plot.PNG
